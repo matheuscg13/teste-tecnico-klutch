@@ -9,7 +9,7 @@ class SolicitationSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Solicitations
-        fields = ['client', 'interest_per_installment', 'number_of_installments', 'installment_value', 'total_value', 'comission', 'card_number', 'card_cvc', 'card_validity', 'desired_value', 'table']
+    fields = ['client', 'interest_per_installment', 'number_of_installments', 'installment_value', 'total_value', 'comission', 'card_number', 'card_cvc', 'card_validity', 'desired_value', 'table', "contract"]
         
 
     def get_interest_per_installment(self, obj):

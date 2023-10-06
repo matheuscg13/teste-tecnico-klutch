@@ -11,6 +11,9 @@ def validate_month_year_format(value):
 class TableChoices(models.TextChoices):
     DEFAULT = "Default"
     PARTNER = "Partner"
+class ContractChoices(models.TextChoices):
+    MANUAL = "Manual"
+    AUTOMATICO = "Automatico"
 
 class Solicitations(models.Model):
     client = models.ForeignKey(
@@ -27,4 +30,5 @@ class Solicitations(models.Model):
     card_validity = models.CharField(max_length=5, validators=[validate_month_year_format])
     desired_value = models.IntegerField(validators=[MaxValueValidator(limit_value=10000), MinValueValidator(limit_value=300)])
     table = models.CharField(max_length=20, choices=TableChoices.choices, default=TableChoices.DEFAULT)
+    contract = models.CharField(choices=ContractChoices.choices, default=ContractChoices.MANUAL)
 
