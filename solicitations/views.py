@@ -16,7 +16,6 @@ class ConsultInstallmentsView(APIView):
         try:
             
             desired_value = request.data.get('desired_value', 0)
-
             if desired_value > 10000:
                 raise ValidationError("O valor deve ser menor ou igual a 10000.")
             if desired_value < 300:

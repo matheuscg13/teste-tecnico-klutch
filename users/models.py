@@ -10,3 +10,4 @@ class Users(AbstractUser):
     last_name = models.CharField(max_length=50)
     cpf = BRCPFField(unique=True)
 
+

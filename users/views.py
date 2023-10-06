@@ -23,4 +23,4 @@ class RetrieveUpdateDestroyUser(RetrieveUpdateDestroyAPIView):
             user = queryset.get(cpf=lookup_value)
             return user
         except Users.DoesNotExist:
-            return Response({'error': 'Usuário não encontrado.'}, status=status.HTTP_404_NOT_FOUND)
+            raise Users.DoesNotExist("Usuário inexistente", status.HTTP_404_NOT_FOUND)
