@@ -11,6 +11,8 @@ class SolicitationView(ListCreateAPIView):
     queryset = Solicitations.objects.all()
     serializer_class = SolicitationSerializer
 
+
+
 class ConsultInstallmentsView(APIView):
     def post(self, request):
         try:

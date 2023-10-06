@@ -9,10 +9,11 @@ class SolicitationSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Solicitations
-    fields = ['client', 'interest_per_installment', 'number_of_installments', 'installment_value', 'total_value', 'comission', 'card_number', 'card_cvc', 'card_validity', 'desired_value', 'table', "contract"]
+        fields = ['client', 'interest_per_installment', 'number_of_installments', 'installment_value', 'total_value', 'comission', 'card_number', 'card_cvc', 'card_validity', 'desired_value', 'table']
         
 
     def get_interest_per_installment(self, obj):
+        
         if obj.table == "Partner":
             return obj.number_of_installments * 1.5
         else:
@@ -32,6 +33,7 @@ class SolicitationSerializer(serializers.ModelSerializer):
         return obj.total_value / obj.number_of_installments
     
     def create(self, validated_data: dict):
+        print("=" * 1000)
         solicitation = Solicitations(**validated_data)
 
         if solicitation.table == "Partner":
